@@ -8,7 +8,7 @@
 }
 
 body {
-  background: #8758ff;
+  background-color: #d9caff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,10 +25,13 @@ h1 {
 }
 
 .TodoWrapper {
+  display: flex;
+  flex-direction: column;
   background: #1A1A40;
-  margin-top: 5rem;
+  margin-top: 2rem;
   padding: 2rem;
   border-radius: 5px;
+  width: 80rem;
 }
 
 .TodoForm {
@@ -68,6 +71,8 @@ h1 {
   padding: 0.75rem 1rem;
   border-radius: 5px;
   margin-bottom: 1rem;
+  width: 50%;
+  margin-left: 25%;
 }
 
 .fa-trash {
@@ -88,4 +93,8 @@ h1 {
 .edit-icon,
 .delete-icon {
   cursor: pointer;
+}
+
+.switch {
+  align-self: flex-start;
 }
