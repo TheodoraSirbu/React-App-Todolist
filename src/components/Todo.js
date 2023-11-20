@@ -27,7 +27,6 @@ export const Todo = ({ task, deleteTodo, editTodo, toggleComplete, toggleChecked
             <Checkbox
               {...label}
               onChange={handleChange}
-              defaultChecked
               sx={{
                 color: "white",
                 "&.Mui-checked": {
