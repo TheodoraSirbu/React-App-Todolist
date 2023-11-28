@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Todo } from "./Todo";
 import { TodoForm } from "./TodoForm";
 import { v4 as uuidv4 } from "uuid";
@@ -10,7 +10,6 @@ import "../styles/dark.css";
 
 export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
-
   const addTodo = (todo) => {
     setTodos([
       ...todos,
@@ -24,7 +23,7 @@ export const TodoWrapper = () => {
   };
 
   const deleteTodo = (id) => {
-    const result = window.confirm("Are you sure you want to delete this book?");
+    const result = window.confirm("Are you sure you want to delete this task?");
     if (result) {
       handleOpenSnackbar("Entry deleted.", "success");
       setTodos(todos.filter((todo) => todo.id !== id));
@@ -76,11 +75,9 @@ export const TodoWrapper = () => {
   };
 
   //Snackbar
-
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
-  const [severity, setSeverity] = useState("");
-
+  const [severity, setSeverity] = useState('success');
   const handleOpenSnackbar = (message, severity) => {
     setSnackbarMessage(message);
     setSeverity(severity);
@@ -92,7 +89,7 @@ export const TodoWrapper = () => {
     setSnackbarMessage("");
   };
   
-  // bulk operations
+  // Bulk operations
 
   const toggleChecked = (id) => {
     setTodos(
@@ -125,6 +122,7 @@ export const TodoWrapper = () => {
           />
         )
       )}
+      
       <CustomSnackbar
         open={snackbarOpen}
         message={snackbarMessage}

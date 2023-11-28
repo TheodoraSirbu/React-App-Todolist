@@ -3,12 +3,13 @@ import { TodoForm } from './TodoForm';
 import { v4 as uuidv4 } from 'uuid';
 import { Todo } from './Todo';
 import { EditTodoForm } from './EditTodoForm';
+uuidv4();
 
 export const TodoWrapperLocalStorage = () => {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+        const savedTodos = JSON.parse(window.localStorage.getItem('todos')) || [];
         setTodos(savedTodos);
     }, []);
 
@@ -16,7 +17,7 @@ export const TodoWrapperLocalStorage = () => {
         const newTodo = { id: uuidv4(), task: todo, completed: false, isEditing: false };
         const newTodos = [...todos, newTodo];
         setTodos(newTodos);
-        localStorage.setItem('todos', JSON.stringify(newTodos));
+        window.localStorage.setItem('todos', JSON.stringify(newTodos));
     };
 
     const toggleComplete = id => {
@@ -24,13 +25,13 @@ export const TodoWrapperLocalStorage = () => {
             todo.id === id ? { ...todo, completed: !todo.completed } : todo
         );
         setTodos(newTodos);
-        localStorage.setItem('todos', JSON.stringify(newTodos));
+        window.localStorage.setItem('todos', JSON.stringify(newTodos));
     };
 
     const deleteTodo = id => {
         const newTodos = todos.filter(todo => todo.id !== id);
         setTodos(newTodos);
-        localStorage.setItem('todos', JSON.stringify(newTodos));
+        window.localStorage.setItem('todos', JSON.stringify(newTodos));
     };
 
     const editTodo = id => {
@@ -38,7 +39,7 @@ export const TodoWrapperLocalStorage = () => {
             todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
         );
         setTodos(newTodos);
-        localStorage.setItem('todos', JSON.stringify(newTodos));
+        window.localStorage.setItem('todos', JSON.stringify(newTodos));
     };
 
     const editTask = (task, id) => {
@@ -46,7 +47,7 @@ export const TodoWrapperLocalStorage = () => {
             todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo
         );
         setTodos(newTodos);
-        localStorage.setItem('todos', JSON.stringify(newTodos));
+        window.localStorage.setItem('todos', JSON.stringify(newTodos));
     };
 
     return (
