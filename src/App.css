@@ -98,3 +98,24 @@ h1 {
 .switch {
   align-self: flex-start;
 }
+
+
+/* Media Query for 460px and below */
+@media screen and (max-width: 460px) {
+  .TodoWrapper {
+    width: 90%;
+    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .Todo {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .todo-input {
+    width: 100%;
+    max-width: 100%;
+  }
+}
